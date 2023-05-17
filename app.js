@@ -1,5 +1,4 @@
-// let btnClck = document.querySelectorAll('button');
-// let newArray = [];
+
 let operand = '';
 let factor1 = '';
 let factor2 = '';
@@ -15,11 +14,7 @@ document.querySelector('.buttons').addEventListener('click', function(e){
       } 
       else if (answer != '' && factor1 != '' && factor2 == '') {
         factor2 = 0;
-        // factor1 = answer;
       } 
-      // else if (factor2 != '') {
-        // factor1 = answer;
-      // }
       operand = e.target.textContent;
       inputValue.value = operand;
       inputValue.value = '';
@@ -39,22 +34,26 @@ document.querySelector('.buttons').addEventListener('click', function(e){
   } 
   
   else if(e.target.matches('.equals')) {
-      
+    if(factor1.includes('.') || factor2.includes('.')) {
+      factor1 = parseFloat(factor1);
+      factor2 = parseFloat(factor2);
+
+    } 
     switch(operand) {
       case '+':
-        answer = parseInt(factor1) + parseInt(factor2) ;
+        answer = factor1 + factor2;
         inputValue.value = answer;
         break;
       case '-':
-        answer = parseInt(factor1) - parseInt(factor2);
+        answer = factor1 - factor2;
         inputValue.value = answer;
         break;
       case '*':
-        answer = parseInt(factor1) * parseInt(factor2);
+        answer = factor1 * factor2;
         inputValue.value = answer;
         break;
       case '/':
-        answer = parseInt(factor1) / parseInt(factor2);
+        answer = factor1 / factor2;
         inputValue.value = answer;
         break;
     }
@@ -67,7 +66,6 @@ document.querySelector('.buttons').addEventListener('click', function(e){
       inputValue.value = factor1;
     } 
     else {
-      // inputValue.value = '';
       factor2 = inputValue.value + e.target.textContent;
       inputValue.value = factor2;
     }

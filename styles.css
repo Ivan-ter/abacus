@@ -32,11 +32,12 @@ input {
 }
 
 .buttons {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   height: 100px;
 }
 
@@ -52,8 +53,14 @@ button {
   font-weight: bold;
 }
 
-.zero, #equalz {
-  flex-basis: 200px;
+.zero {
+  grid-column: 1 / 3;
+  width: 200px;
+  }
+
+.equals {
+  grid-column: 3 / 5;
+  width: 200px;
 }
 
 #clear {
@@ -74,6 +81,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-.on {
+/* .on {
   transform: scale(1.05);
-}
+} */
